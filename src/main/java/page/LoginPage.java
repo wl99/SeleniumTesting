@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by wwl on 2019/2/19.
  */
-public class LoginPage {
+public class LoginPage extends Navbar{
     @FindBy(css = ".alert.alert-danger")
     WebElement alert;
 
