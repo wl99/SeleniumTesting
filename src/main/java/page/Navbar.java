@@ -1,7 +1,6 @@
 package page;
 
 import driver.Driver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -23,6 +22,9 @@ public class Navbar {
     @FindBy(css = ".navbar-brand")
     WebElement index;
 
+    @FindBy(css = "#main-nav-menu .navbar-nav li")
+    List<WebElement> nvbList;
+
     /**
      * 获取最近窗口标题
      *
@@ -42,6 +44,23 @@ public class Navbar {
 
     public void switchToWindow(String handles) {
         Driver.getCurrentDriver().switchTo().window(handles);
+    }
+
+    private boolean clickNvbByText(String name) {
+        for (WebElement e : nvbList) {
+            if (e.getText().trim().equalsIgnoreCase(name)) {
+                e.click();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public TeamListPage gotoTeams2(){
+        if (clickNvbByText("社团")) {
+            return new TeamListPage();
+        }
+        return null;
     }
 
 
