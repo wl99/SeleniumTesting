@@ -1,6 +1,7 @@
 package page;
 
 import driver.Driver;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -35,7 +36,12 @@ public class TeamListPage extends Navbar {
         for(WebElement e:teamList){
             if(e.getText().equalsIgnoreCase(teamName)){
                 System.out.println(e.getText());
-                e.click();
+                try {
+                    e.click();
+                } catch (StaleElementReferenceException e1) {
+                    e.click();
+                    e1.printStackTrace();
+                }
                 return true;
             }
         }

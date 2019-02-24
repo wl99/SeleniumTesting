@@ -2,6 +2,7 @@ package page;
 
 import driver.Driver;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -49,7 +50,12 @@ public class Navbar {
     private boolean clickNvbByText(String name) {
         for (WebElement e : nvbList) {
             if (e.getText().trim().equalsIgnoreCase(name)) {
-                e.click();
+                try {
+                    e.click();
+                } catch (StaleElementReferenceException e1) {
+                    e.click();
+                    e1.printStackTrace();
+                }
                 return true;
             }
         }
