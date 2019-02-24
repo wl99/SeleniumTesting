@@ -6,6 +6,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 import java.util.Set;
@@ -25,6 +26,10 @@ public class Navbar {
 
     @FindBy(css = "#main-nav-menu .navbar-nav li")
     List<WebElement> nvbList;
+
+    Navbar() {
+        PageFactory.initElements(Driver.getCurrentDriver(), this);
+    }
 
     /**
      * 获取最近窗口标题
@@ -62,7 +67,7 @@ public class Navbar {
         return false;
     }
 
-    public TeamListPage gotoTeams2(){
+    public TeamListPage gotoTeams2() {
         if (clickNvbByText("社团")) {
             return new TeamListPage();
         }

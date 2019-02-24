@@ -1,6 +1,7 @@
 package page;
 
 import driver.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by wwl on 2019/2/19.
+ *
  * @author wwl
  */
 public class TeamListPage extends Navbar {
@@ -19,12 +21,12 @@ public class TeamListPage extends Navbar {
     @FindBy(css = "[data-name=\"霍格沃兹测试学院\"]")
     WebElement hogwarts;
 
-    @FindBy(css = ".row .team-name")
+    @FindBy(css = ".team-name")
     List<WebElement> teamList;
 
     public TeamListPage() {
         PageFactory.initElements(Driver.getCurrentDriver(), this);
-        new WebDriverWait(Driver.getCurrentDriver(),5).until(ExpectedConditions.titleContains("社团"));
+        new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleContains("社团"));
     }
 
     public TeamPage gotoHogwarts() {
@@ -32,27 +34,9 @@ public class TeamListPage extends Navbar {
         return new TeamPage();
     }
 
-    private boolean clickTeamName(String teamName){
-        for(WebElement e:teamList){
-            if(e.getText().equalsIgnoreCase(teamName)){
-                System.out.println(e.getText());
-                try {
-                    e.click();
-                } catch (StaleElementReferenceException e1) {
-                    e.click();
-                    e1.printStackTrace();
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public TeamPage gotoTeamPageByName(String teamName){
-        if(clickTeamName(teamName)){
-            return new TeamPage();
-        }
-        return null;
+    public TeamPage gotoTeamPageByName(String teamName) {
+        Driver.getCurrentDriver().findElement(By.cssSelector("[data-name=\"" + teamName + "\"]")).click();
+        return new TeamPage();
     }
 
 

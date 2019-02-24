@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public class TeamPage extends Navbar{
 //    By topics = By.cssSelector("span.node");
-    @FindBy(css = "span.node")
+    @FindBy(css = "div.title.media-heading")
     List<WebElement> topics;
 
 

@@ -35,12 +35,11 @@ public class TeamsTest {
 
 
     @Test
-    void 未登录点击霍格沃兹测试学院测试2() {
-        TeamListPage actualResult1 = assertTimeout(ofMinutes(2), () -> homePage.gotoTeams2());
-        TeamPage actualResult = assertTimeout(ofMinutes(2), () -> actualResult1.gotoTeamPageByName("霍格沃兹测试学院"));
-        String result = actualResult.clickFirstTopicFail().getAlertText();
+    void notLoginClickHogwarts() {
+        String result =homePage.gotoTeams2().
+                gotoTeamPageByName("霍格沃兹测试学院").
+                clickFirstTopicFail().getAlertText();
         assertThat(result, equalTo("访问被拒绝，你可能没有权限或未登录。"));
-//        homePage.gotoHomePage();
     }
 
     @AfterAll
