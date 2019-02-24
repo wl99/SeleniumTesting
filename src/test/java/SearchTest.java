@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import page.HomePage;
 
@@ -26,6 +27,16 @@ public class SearchTest {
             "python"
     })
     void 搜索测试(String keyword) {
+        String result = homePage.sendKeysToSearchInput(keyword).actionSendEnter().getResultText();
+        String[] buff = result.split(" “|” ");
+        //result = 关于 “Selenium” 的搜索结果, 共 1301 条
+        // 截取查询关键字对比是否一致
+        assertThat(keyword, equalTo(buff[1]));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/data/search.csv")
+    void 搜索测试2(String keyword) {
         String result = homePage.sendKeysToSearchInput(keyword).actionSendEnter().getResultText();
         String[] buff = result.split(" “|” ");
         //result = 关于 “Selenium” 的搜索结果, 共 1301 条
