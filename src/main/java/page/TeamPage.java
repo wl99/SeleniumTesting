@@ -2,6 +2,7 @@ package page;
 
 import driver.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -23,7 +24,13 @@ public class TeamPage extends Navbar{
     }
 
     public LoginPage clickFirstTopicFail(){
-        Objects.requireNonNull(topics).get(0).click();
+
+        try {
+            Objects.requireNonNull(topics).get(0).click();
+        } catch (StaleElementReferenceException e) {
+            Objects.requireNonNull(topics).get(0).click();
+            e.printStackTrace();
+        }
         return new LoginPage();
     }
 
