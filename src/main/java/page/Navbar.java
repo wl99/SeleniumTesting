@@ -1,6 +1,7 @@
 package page;
 
 import driver.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -29,6 +30,22 @@ public class Navbar {
 
     Navbar() {
         PageFactory.initElements(Driver.getCurrentDriver(), this);
+    }
+
+    static WebElement find(By by){
+        try {
+            return Driver.getCurrentDriver().findElement(by);
+        } catch (StaleElementReferenceException e) {
+            return Driver.getCurrentDriver().findElement(by);
+        }
+    }
+
+    static List<WebElement> finds(By by){
+        try {
+            return Driver.getCurrentDriver().findElements(by);
+        } catch (StaleElementReferenceException e) {
+            return Driver.getCurrentDriver().findElements(by);
+        }
     }
 
     /**

@@ -16,7 +16,7 @@ import java.util.Objects;
 public class TeamPage extends Navbar{
 //    By topics = By.cssSelector("span.node");
     @FindBy(css = "div.title.media-heading")
-    List<WebElement> topics;
+    List<WebElement> topics2;
 
 
     public TeamPage(){
@@ -24,13 +24,7 @@ public class TeamPage extends Navbar{
     }
 
     public LoginPage clickFirstTopicFail(){
-
-        try {
-            Objects.requireNonNull(topics).get(0).click();
-        } catch (StaleElementReferenceException e) {
-            Objects.requireNonNull(topics).get(0).click();
-            e.printStackTrace();
-        }
+        topics2.get(0).click();
         return new LoginPage();
     }
 

@@ -2,10 +2,13 @@ package page;
 
 import config.Config;
 import driver.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.xml.bind.Element;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -34,6 +37,8 @@ public class HomePage extends Navbar {
     public static void quit() {
         Driver.quit();
     }
+
+
 
     /**
      * 获取最近的handle
