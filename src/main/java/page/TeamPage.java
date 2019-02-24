@@ -22,7 +22,7 @@ public class TeamPage extends Navbar{
         PageFactory.initElements(Driver.getCurrentDriver(), this);
     }
 
-    public LoginPage clickFristTopicFail(){
+    public LoginPage clickFirstTopicFail(){
         Objects.requireNonNull(topics).get(0).click();
         return new LoginPage();
     }
