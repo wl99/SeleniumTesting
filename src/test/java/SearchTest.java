@@ -35,6 +35,6 @@ public class SearchTest {
 
     @AfterAll
     static void teardown() {
-        HomePage.qiut();
+        HomePage.quit();
     }
 }

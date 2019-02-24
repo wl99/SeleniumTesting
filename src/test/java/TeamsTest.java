@@ -27,6 +27,6 @@ public class TeamsTest {
 
     @AfterAll
     static void teardown() {
-        HomePage.qiut();
+        HomePage.quit();
     }
 }

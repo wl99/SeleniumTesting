@@ -23,26 +23,6 @@ public class Navbar {
     @FindBy(css = ".navbar-brand")
     WebElement index;
 
-    static WebElement find(By locator) {
-        try {
-            return Driver.getCurrentDriver().findElement(locator);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    static List<WebElement> finds(By locator) {
-        List<WebElement> array;
-        try {
-            array = Driver.getCurrentDriver().findElements(locator);
-            return array;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     /**
      * 获取最近窗口标题
      *

@@ -23,8 +23,8 @@ public class HomePage extends Navbar {
         return new HomePage();
     }
 
-    public static void qiut(){
-        Driver.qiut();
+    public static void quit(){
+        Driver.quit();
     }
 
     /**

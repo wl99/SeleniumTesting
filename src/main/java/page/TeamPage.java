@@ -6,13 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
  * Created by wwl on 2019/2/19.
  */
 public class TeamPage extends Navbar{
-    By topics = By.cssSelector("span.node");
+//    By topics = By.cssSelector("span.node");
+    @FindBy(css = "span.node")
+    List<WebElement> topics;
 
 
     public TeamPage(){
@@ -20,7 +23,7 @@ public class TeamPage extends Navbar{
     }
 
     public LoginPage clickFristTopicFail(){
-        Objects.requireNonNull(finds(topics)).get(0).click();
+        Objects.requireNonNull(topics).get(0).click();
         return new LoginPage();
     }
 

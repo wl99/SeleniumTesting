@@ -20,7 +20,7 @@ public class Driver {
         driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
     }
 
-    public static void qiut(){
+    public static void quit(){
         driver.quit();
     }
 

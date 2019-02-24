@@ -34,7 +34,7 @@ public class BannerTest {
 
     @AfterAll
     static void teardown() {
-        HomePage.qiut();
+        HomePage.quit();
     }
 
 }
