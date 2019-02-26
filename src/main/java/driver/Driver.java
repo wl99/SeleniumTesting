@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Created by wwl on 2019/2/19.
  * @author wwl
@@ -25,6 +23,11 @@ public class Driver {
 
     public static WebDriver getCurrentDriver(){
         return driver;
+    }
+
+    //刷新页面
+    public static void refresh(){
+        Driver.getCurrentDriver().navigate().refresh();
     }
 
 

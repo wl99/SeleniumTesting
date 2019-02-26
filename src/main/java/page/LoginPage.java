@@ -5,6 +5,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,7 +23,7 @@ public class LoginPage extends Navbar {
     WebElement password;
 
     public LoginPage() {
-        PageFactory.initElements(Driver.getCurrentDriver(), this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
         new WebDriverWait(Driver.getCurrentDriver(), 5).until(ExpectedConditions.titleContains("登录"));
     }
 

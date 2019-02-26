@@ -2,17 +2,16 @@ package page;
 
 import config.Config;
 import driver.Driver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
-import javax.xml.bind.Element;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by wwl on 2019/2/19.
+ * @author wwl
  */
 public class HomePage extends Navbar {
     @FindBy(css = ".content img")
@@ -24,7 +23,7 @@ public class HomePage extends Navbar {
 
 
     HomePage() {
-        PageFactory.initElements(Driver.getCurrentDriver(), this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
     }
 
     public static HomePage start() {

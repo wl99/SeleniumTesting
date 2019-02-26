@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import java.util.List;
 import java.util.Set;
@@ -29,14 +30,15 @@ public class Navbar {
     List<WebElement> nvbList;
 
     Navbar() {
-        PageFactory.initElements(Driver.getCurrentDriver(), this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
     }
 
     static WebElement find(By by){
         try {
             return Driver.getCurrentDriver().findElement(by);
         } catch (StaleElementReferenceException e) {
-            return Driver.getCurrentDriver().findElement(by);
+            Driver.refresh();
+            return find(by);
         }
     }
 
@@ -44,7 +46,8 @@ public class Navbar {
         try {
             return Driver.getCurrentDriver().findElements(by);
         } catch (StaleElementReferenceException e) {
-            return Driver.getCurrentDriver().findElements(by);
+            Driver.refresh();
+            return finds(by);
         }
     }
 

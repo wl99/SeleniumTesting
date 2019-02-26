@@ -4,6 +4,7 @@ import driver.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 /**
  * Created by wwl on 2019/2/19.
@@ -13,8 +14,8 @@ public class SearchResultPage extends Navbar{
     @FindBy(css =".media-body")
     private WebElement result;
 
-    public SearchResultPage(){
-        PageFactory.initElements(Driver.getCurrentDriver(),this);
+    SearchResultPage(){
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10),this);
     }
 
     public String getResultText(){
