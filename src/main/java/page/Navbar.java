@@ -1,6 +1,7 @@
 package page;
 
 import driver.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -33,6 +34,7 @@ public class Navbar {
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
     }
 
+    @Step("查找元素：{0}")
     static WebElement find(By by){
         try {
             return Driver.getCurrentDriver().findElement(by);
@@ -60,26 +62,30 @@ public class Navbar {
         return Driver.getCurrentDriver().getTitle();
     }
 
+    @Step("获取最近的操作的Handle")
     public String getCurrentWindowHandle() {
         return Driver.getCurrentDriver().getWindowHandle();
     }
 
+    @Step("获取最近的操作的Handles")
     public Set<String> getCurrentWindowHandles() {
         return Driver.getCurrentDriver().getWindowHandles();
     }
 
+    @Step("切换窗口至{0}")
     public void switchToWindow(String handles) {
         Driver.getCurrentDriver().switchTo().window(handles);
     }
 
+    @Step("点击导航栏中的{0}，返回是否存在改按钮")
     private boolean clickNvbByText(String name) {
         for (WebElement e : nvbList) {
             if (e.getText().trim().equalsIgnoreCase(name)) {
                 try {
                     e.click();
                 } catch (StaleElementReferenceException e1) {
-                    e.click();
                     e1.printStackTrace();
+                    e.click();
                 }
                 return true;
             }
@@ -87,6 +93,7 @@ public class Navbar {
         return false;
     }
 
+    @Step("去往社团页面，返回社团列表页面2")
     public TeamListPage gotoTeams2() {
         if (clickNvbByText("社团")) {
             return new TeamListPage();
@@ -95,16 +102,19 @@ public class Navbar {
     }
 
 
+    @Step("去往社团页面，返回社团列表页面")
     public TeamListPage gotoTeams() {
         teams.click();
         return new TeamListPage();
     }
 
+    @Step("去往首页")
     public HomePage gotoHomePage() {
         index.click();
         return new HomePage();
     }
 
+    @Step("执行ENTER操作，去搜索结果页")
     public SearchResultPage actionSendEnter() {
         Actions action = new Actions(Driver.getCurrentDriver());
         action.sendKeys(Keys.ENTER).perform();

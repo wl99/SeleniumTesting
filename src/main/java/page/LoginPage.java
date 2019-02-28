@@ -1,6 +1,7 @@
 package page;
 
 import driver.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,11 +28,13 @@ public class LoginPage extends Navbar {
         new WebDriverWait(Driver.getCurrentDriver(), 5).until(ExpectedConditions.titleContains("登录"));
     }
 
+    @Step("输入登录ID：{0}")
     public void inputLoginId(String id) {
         loginId.clear();
         loginId.sendKeys(id);
     }
 
+    @Step("获取弹窗文本信息")
     public String getAlertText() {
         try {
             return alert.getText();

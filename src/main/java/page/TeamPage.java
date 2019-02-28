@@ -1,6 +1,7 @@
 package page;
 
 import driver.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -24,6 +25,7 @@ public class TeamPage extends Navbar{
         new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleIs("TesterHome"));
     }
 
+    @Step("点击话题列表第一个话题")
     public LoginPage clickFirstTopicFail(){
         topics2.get(0).click();
         return new LoginPage();

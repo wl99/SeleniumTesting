@@ -2,10 +2,13 @@ package page;
 
 import config.Config;
 import driver.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,8 +27,10 @@ public class HomePage extends Navbar {
 
     HomePage() {
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
+        new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleContains("TesterHome"));
     }
 
+    @Step("打开主页并最大化")
     public static HomePage start() {
         Driver.start();
         Driver.getCurrentDriver().get(URL);
@@ -45,6 +50,7 @@ public class HomePage extends Navbar {
      *
      * @return EventPage
      */
+    @Step("点击Banner")
     public EventPage clickBanner() {
         String handle1 = getCurrentWindowHandle();
         banner.click();
@@ -56,6 +62,7 @@ public class HomePage extends Navbar {
         return new EventPage();
     }
 
+    @Step("输入{0}并搜索")
     public HomePage sendKeysToSearchInput(String keyword) {
         searchInput.clear();
         searchInput.sendKeys(keyword);
