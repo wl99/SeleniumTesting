@@ -20,8 +20,8 @@ public class TeamPage extends Navbar{
 
 
     public TeamPage(){
-        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
-        new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleIs("TesterHome"));
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),config.timeout), this);
+        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleIs("TesterHome"));
     }
 
     @Step("点击话题列表第一个话题")

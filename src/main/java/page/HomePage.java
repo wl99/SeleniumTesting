@@ -1,6 +1,5 @@
 package page;
 
-import config.Config;
 import driver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
@@ -21,14 +20,14 @@ public class HomePage extends Navbar {
     @FindBy(css = ".content img")
     private WebElement banner;
 
-    private static Config config = Config.load("/config/config.yaml");
+
 
     private static final String URL = config.url;
 
 
     HomePage() {
-        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), 10), this);
-        new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleContains("TesterHome"));
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), config.timeout), this);
+        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("TesterHome"));
 
     }
 

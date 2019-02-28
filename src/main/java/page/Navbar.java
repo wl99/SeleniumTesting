@@ -1,5 +1,6 @@
 package page;
 
+import config.Config;
 import driver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -20,6 +21,8 @@ import java.util.Set;
  * Created by wwl on 2019/2/19.
  */
 public class Navbar {
+    static Config config = Config.load("/config/config.yaml");
+
     @FindBy(tagName = "input")
     WebElement searchInput;
 
