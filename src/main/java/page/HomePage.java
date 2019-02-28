@@ -27,7 +27,6 @@ public class HomePage extends Navbar {
 
 
     HomePage() {
-        System.out.println("#########初始化主页###########");
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), 10), this);
         new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleContains("TesterHome"));
 

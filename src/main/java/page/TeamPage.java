@@ -15,13 +15,11 @@ import java.util.List;
  * Created by wwl on 2019/2/19.
  */
 public class TeamPage extends Navbar{
-    // By topics = By.cssSelector("span.node");
     @FindBy(css = "div.title.media-heading")
     List<WebElement> topics2;
 
 
     public TeamPage(){
-        System.out.println("#########初始化团队话题列表页###########");
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
         new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleIs("TesterHome"));
     }

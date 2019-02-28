@@ -32,7 +32,6 @@ public class TeamsTest {
         LoginPage loginPage = homePage.gotoTeams().gotoHogwarts().clickFirstTopicFail();
         String result = loginPage.getAlertText();
         loginPage.gotoHomePage();
-
         assertThat(result, equalTo("访问被拒绝，你可能没有权限或未登录。"));
     }
 
@@ -42,10 +41,9 @@ public class TeamsTest {
     @Test
     void notLoginClickHogwarts() {
         LoginPage loginPage = homePage.gotoTeams().
-                gotoTeamPageByName("霍格沃兹测试学院").
+                gotoTeamPageByName("TesterHome内部站务").
                 clickFirstTopicFail();
         String result = loginPage.getAlertText();
-
         assertThat(result, equalTo("访问被拒绝，你可能没有权限或未登录。"));
         loginPage.gotoHomePage();
     }
@@ -56,7 +54,6 @@ public class TeamsTest {
         LoginPage loginPage = homePage.gotoTeams().gotoHogwarts().clickFirstTopicFail();
         String result = loginPage.getAlertText();
         loginPage.gotoHomePage();
-
         assertThat(result, equalTo("访问被拒绝，你可能没有权限或未登录。"));
     }
 

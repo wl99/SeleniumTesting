@@ -26,23 +26,19 @@ public class TeamListPage extends Navbar {
     List<WebElement> teamList;
 
     public TeamListPage() {
-        System.out.println("#########初始化团队列表页###########");
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), 10), this);
         new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleContains("社团"));
     }
 
     @Step("点击‘霍格沃兹测试学院’，往社团页")
     public TeamPage gotoHogwarts() {
-        System.out.println(hogwarts);
         hogwarts.click();
         return new TeamPage();
     }
 
     @Step("点击{0},跳转至{0}社团页面")
     public TeamPage gotoTeamPageByName(String teamName) {
-        WebElement e = find(By.cssSelector("[data-name=\"" + teamName + "\"]"));
-        System.out.println(e);
-        e.click();
+        find(By.cssSelector("[data-name=\"" + teamName + "\"]")).click();
         return new TeamPage();
     }
 
