@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by wwl on 2019/2/19.
+ *
  * @author wwl
  */
 public class HomePage extends Navbar {
@@ -26,8 +27,10 @@ public class HomePage extends Navbar {
 
 
     HomePage() {
-        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
+        System.out.println("#########初始化主页###########");
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), 10), this);
         new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleContains("TesterHome"));
+
     }
 
     @Step("打开主页并最大化")
@@ -41,7 +44,6 @@ public class HomePage extends Navbar {
     public static void quit() {
         Driver.quit();
     }
-
 
 
     /**

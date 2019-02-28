@@ -26,6 +26,7 @@ public class TeamListPage extends Navbar {
     List<WebElement> teamList;
 
     public TeamListPage() {
+        System.out.println("#########初始化团队列表页###########");
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), 10), this);
         new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleContains("社团"));
     }

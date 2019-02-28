@@ -21,8 +21,11 @@ public class Navbar {
     @FindBy(tagName = "input")
     WebElement searchInput;
 
-    @FindBy(xpath = "//*[@id=\"main-nav-menu\"]/ul/li[4]/a")
+    @FindBy(css = "#main-nav-menu .navbar-nav [href=\"/teams\"]")
     WebElement teams;
+
+    @FindBy(css = "#main-nav-menu .navbar-nav [href=\"/questions\"]")
+    WebElement questions;
 
     @FindBy(css = ".navbar-brand")
     WebElement index;
@@ -31,6 +34,7 @@ public class Navbar {
     List<WebElement> nvbList;
 
     Navbar() {
+        System.out.println("#########初始化导航栏###########");
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
     }
 
@@ -77,31 +81,6 @@ public class Navbar {
         Driver.getCurrentDriver().switchTo().window(handles);
     }
 
-    @Step("点击导航栏中的{0}，返回是否存在改按钮")
-    private boolean clickNvbByText(String name) {
-        for (WebElement e : nvbList) {
-            if (e.getText().trim().equalsIgnoreCase(name)) {
-                try {
-                    e.click();
-                } catch (StaleElementReferenceException e1) {
-                    e1.printStackTrace();
-                    e.click();
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Step("去往社团页面，返回社团列表页面2")
-    public TeamListPage gotoTeams2() {
-        if (clickNvbByText("社团")) {
-            return new TeamListPage();
-        }
-        return null;
-    }
-
-
     @Step("去往社团页面，返回社团列表页面")
     public TeamListPage gotoTeams() {
         teams.click();
@@ -112,6 +91,11 @@ public class Navbar {
     public HomePage gotoHomePage() {
         index.click();
         return new HomePage();
+    }
+
+    @Step("去往问答页面")
+    public void gotoQuestions(){
+        questions.click();
     }
 
     @Step("执行ENTER操作，去搜索结果页")
