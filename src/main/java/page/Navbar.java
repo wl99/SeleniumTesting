@@ -39,8 +39,8 @@ public class Navbar {
     List<WebElement> nvbList;
 
     Navbar() {
-        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),10), this);
-        new WebDriverWait(Driver.getCurrentDriver(), 6).until(ExpectedConditions.titleContains("TesterHome"));
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),config.timeout), this);
+        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("TesterHome"));
     }
 
     @Step("查找元素：{0}")

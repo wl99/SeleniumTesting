@@ -8,9 +8,9 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 /**
  * Created by wwl on 2019/2/19.
  */
-public class EventPage extends Navbar{
+public class EventPage {
     EventPage() {
-        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), config.timeout), this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), 10), this);
     }
 
     @Step("获取页面的Title")

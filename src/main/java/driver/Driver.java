@@ -25,7 +25,9 @@ public class Driver {
         return driver;
     }
 
-    //刷新页面
+    /**
+     * 刷新页面
+     */
     public static void refresh(){
         Driver.getCurrentDriver().navigate().refresh();
     }
