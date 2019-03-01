@@ -1,3 +1,8 @@
 url: https://testerhome.com/
 time: 6
 timeout: 10
+elementConfig:
+  NAVBAR:
+    searchInput: input
+  TEAM_PAGE:
+    topics: div.title.media-heading

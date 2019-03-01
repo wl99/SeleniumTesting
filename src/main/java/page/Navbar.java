@@ -1,6 +1,7 @@
 package page;
 
 import config.Config;
+import config.ElementConfig;
 import driver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -14,14 +15,20 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
 /**
  * Created by wwl on 2019/2/19.
+ *
+ * @author wwl
  */
 public class Navbar {
-    static Config config = Config.load("/config/config.yaml");
+    private static final String configUrl = "/config/config.yaml";
+    static Config config = Config.load(configUrl);
+    ElementConfig elementConfig = new ElementConfig();
+    HashMap<String, String> navbar = config.elementConfig.NAVBAR;
 
     @FindBy(tagName = "input")
     WebElement searchInput;
@@ -39,13 +46,15 @@ public class Navbar {
     List<WebElement> nvbList;
 
     Navbar() {
-        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),config.timeout), this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), config.timeout), this);
         new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("TesterHome"));
     }
 
     @Step("查找元素：{0}")
-    static WebElement find(By by){
+    static WebElement find(By by) {
         try {
+            WebDriverWait wait = new WebDriverWait(Driver.getCurrentDriver(), 10);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(by));
             return Driver.getCurrentDriver().findElement(by);
         } catch (StaleElementReferenceException e) {
             Driver.refresh();
@@ -53,8 +62,10 @@ public class Navbar {
         }
     }
 
-    static List<WebElement> finds(By by){
+    static List<WebElement> finds(By by) {
         try {
+            WebDriverWait wait = new WebDriverWait(Driver.getCurrentDriver(), 10);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(by));
             return Driver.getCurrentDriver().findElements(by);
         } catch (StaleElementReferenceException e) {
             Driver.refresh();
@@ -99,7 +110,7 @@ public class Navbar {
     }
 
     @Step("去往问答页面")
-    public void gotoQuestions(){
+    public void gotoQuestions() {
         questions.click();
     }
 

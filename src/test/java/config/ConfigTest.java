@@ -2,8 +2,6 @@ package config;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ConfigTest {
 
     @Test
@@ -11,5 +9,6 @@ class ConfigTest {
         Config config= Config.load("/config/config.yaml");
         assert config != null;
         System.out.println(config.url);
+        System.out.println(config.elementConfig.NAVBAR.get("searchInput"));
     }
 }
