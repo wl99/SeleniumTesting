@@ -10,10 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 class SeleniumGridTest {
     @Test
@@ -41,7 +40,8 @@ class SeleniumGridTest {
 //        String baseUrl = "http://192.168.2.104:8099/";
         String baseUrl = "https://testerhome.com/";
         com.codeborne.selenide.Selenide.open(baseUrl);
-        $(By.cssSelector(".content img")).click();
+        String result=$(By.cssSelector(".navbar-brand")).getText();
+        assertThat(result, equalTo("TesterHome"));
 
 //        $(byText("Welcome Gaofei!")).should(Condition.visible);
 
