@@ -1,12 +1,8 @@
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.impl.WebDriverContainer;
 import com.codeborne.selenide.impl.WebDriverThreadLocalContainer;
-
-
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -35,7 +31,7 @@ class SeleniumGridTest {
         Configuration.browser = "chrome";
         Configuration.browserCapabilities = capabilities;
         // 本机IP :192.168.2.104
-        Configuration.remote = "http://192.168.2.104:5001/wd/hub";
+        Configuration.remote = "http://192.168.99.100:5001/wd/hub";
 
 //        String baseUrl = "http://192.168.2.104:8099/";
         String baseUrl = "https://testerhome.com/";
