@@ -19,7 +19,7 @@ public class SearchResultPage extends Navbar{
 
     SearchResultPage(){
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),config.timeout),this);
-        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("搜索结果"));
+        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("TesterHome"));
     }
 
     @Step("获取搜索的结果关键字")

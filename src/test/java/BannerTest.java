@@ -1,7 +1,4 @@
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.*;
 import page.EventPage;
 import page.HomePage;
 
@@ -11,6 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Created by wwl on 2019/2/19.
  */
+@Disabled()
 public class BannerTest {
     private static HomePage homePage;
 

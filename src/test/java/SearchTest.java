@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -16,10 +15,10 @@ public class SearchTest {
 
     private
 
-    @BeforeAll
-    static void setup() {
-        homePage = HomePage.start();
-    }
+//    @BeforeAll
+//    static void setup() {
+//        homePage = HomePage.start();
+//    }
 
     @ParameterizedTest
     @CsvSource({
@@ -27,6 +26,7 @@ public class SearchTest {
             "python"
     })
     void 搜索测试(String keyword) {
+        homePage = HomePage.start();
         String result = homePage.sendKeysToSearchInput(keyword).actionSendEnter().getResultText();
         String[] buff = result.split(" “|” ");
         //result = 关于 “Selenium” 的搜索结果, 共 1301 条
@@ -37,6 +37,7 @@ public class SearchTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/data/search.csv")
     void 搜索测试2(String keyword) {
+        homePage = HomePage.start();
         String result = homePage.sendKeysToSearchInput(keyword).actionSendEnter().getResultText();
         String[] buff = result.split(" “|” ");
         //result = 关于 “Selenium” 的搜索结果, 共 1301 条

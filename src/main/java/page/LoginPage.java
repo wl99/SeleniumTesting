@@ -25,7 +25,7 @@ public class LoginPage extends Navbar {
 
     public LoginPage() {
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(),config.timeout), this);
-        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("登录"));
+        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("TesterHome"));
     }
 
     @Step("输入登录ID：{0}")

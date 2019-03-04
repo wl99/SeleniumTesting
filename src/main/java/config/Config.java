@@ -7,13 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Config {
-    public String getUrl() {
-        return url;
-    }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     public int getTime() {
         return time;
@@ -39,7 +33,30 @@ public class Config {
         this.elementConfig = elementConfig;
     }
 
-    public String url = "";
+
+
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+
+
+    public String getRemoteUrl() {
+        return remoteUrl;
+    }
+
+    public void setRemoteUrl(String remoteUrl) {
+        this.remoteUrl = remoteUrl;
+    }
+
+    public String baseUrl = "";
+
+    public String remoteUrl = "http://192.168.99.100:5001/wd/hub";
     public int time = 6;
     public int timeout = 10;
     public ElementConfig elementConfig = new ElementConfig();

@@ -25,7 +25,7 @@ class SeleniumGridTest {
         webdriverContainer.clearBrowserCache();
 
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chrome_options);
+
 
 
         Configuration.browser = "chrome";

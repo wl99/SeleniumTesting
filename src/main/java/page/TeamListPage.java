@@ -27,7 +27,7 @@ public class TeamListPage extends Navbar {
 
     public TeamListPage() {
         PageFactory.initElements(new AjaxElementLocatorFactory(Driver.getCurrentDriver(), config.timeout), this);
-        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("社团"));
+        new WebDriverWait(Driver.getCurrentDriver(), config.timeout).until(ExpectedConditions.titleContains("TesterHome"));
     }
 
     @Step("点击‘霍格沃兹测试学院’，往社团页")

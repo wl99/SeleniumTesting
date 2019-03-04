@@ -25,8 +25,8 @@ import java.util.Set;
  * @author wwl
  */
 public class Navbar {
-    private static final String configUrl = "/config/config.yaml";
-    static Config config = Config.load(configUrl);
+    private static final String configPath = "/config/config.yaml";
+    static Config config = Config.load(configPath);
     ElementConfig elementConfig = new ElementConfig();
     HashMap<String, String> navbar = config.elementConfig.NAVBAR;
 

@@ -21,8 +21,8 @@ public class HomePage extends Navbar {
     private WebElement banner;
 
 
-
-    private static final String URL = config.url;
+    private static final String URL = config.getBaseUrl();
+    private static final String REMOTEURL = config.getRemoteUrl();
 
 
     HomePage() {
@@ -33,7 +33,7 @@ public class HomePage extends Navbar {
 
     @Step("打开主页并最大化")
     public static HomePage start() {
-        Driver.start();
+        Driver.start(REMOTEURL);
         Driver.getCurrentDriver().get(URL);
         Driver.getCurrentDriver().manage().timeouts().implicitlyWait(config.time, TimeUnit.SECONDS);
         return new HomePage();

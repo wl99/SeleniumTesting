@@ -1,4 +1,5 @@
-url: https://testerhome.com/
+baseUrl: https://testerhome.com/
+remoteUrl: http://192.168.99.100:5001/wd/hub
 time: 6
 timeout: 10
 elementConfig:
